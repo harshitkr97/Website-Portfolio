@@ -18,7 +18,7 @@
 }
 
 .container{
-    width:1200px;
+    width:100%;
     margin:0 auto;
 }
 
@@ -28,6 +28,15 @@
     align-items:center;
 
     padding-top:1rem;
+}
+
+
+/* For smaller screens */
+@media (max-width: 480px) {
+  .navbar {
+      flex-direction: column; /* Stack items vertically */
+      padding-top: 0.5rem; /* Reduce padding on smaller screens */
+  }
 }
 
 .logo{
@@ -45,10 +54,47 @@
     font-size:28px;
 }
 
+.logo-text2{
+  margin-left:0.5rem;
+  font-size:28px;
+}
+
+@media (max-width: 480px){
+  .logo{
+    width: 60px;
+  }
+
+  .logo-text{
+    margin-left:-0.8rem;
+    font-size:22px;
+  }
+
+  .logo-text2{
+    margin-left:0.5rem;
+    font-size:22px;
+  }
+
+}
+
 .nav-items{
     display:flex;
     gap:2rem;
     padding: 0 4em;
+}
+
+@media (max-width: 480px) {
+  .nav-items {
+      flex-direction: column; /* Stack items vertically */
+      padding-top: 2rem; /* Reduce padding on smaller screens */
+  }
+
+  .nav-items div{
+    font-size:20px;
+    font-weight:500;
+    cursor:pointer;
+    margin-top: -1.2rem;
+    margin-left: 0.8rem;
+  }
 }
 
 .nav-items div{
@@ -84,7 +130,69 @@ a{
     padding-bottom: 8rem;
 }
 
-.faded-text{
+@media(max-width: 780px){
+
+  .hero-section{
+    position:relative;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    gap: 5rem;
+    margin: 4rem auto;
+    padding: 0 1rem;
+    padding-bottom: 8rem;
+  }
+
+  
+  .hero-section-left{
+    /* width:100%; */
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .hero-section-heading{
+    font-size: 35px;
+    color: #343d68;
+    font-weight: 500;
+    text-align: center; /* Horizontally centers the text */
+    margin: 0 auto; /* Ensures that the text block is centered if it's in a container */
+
+  }
+
+  .user-image{
+      padding:2.5rem;
+      filter:grayscale(1);
+      transition:all 1s;
+      animation: scaleImage 5s linear infinite;
+      max-width: 100%; /* Ensure the image doesn't overflow the container */
+      height: auto; /* Maintain aspect ratio */
+    }
+
+  .user-image img{
+    z-index:-9;
+    max-width: 100%; /* Make sure the image scales with the container */
+    height: auto; /* Maintain the image's aspect ratio */
+  }
+
+  
+
+
+}
+@media(max-width: 370px){
+  .link-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    justify-content: center;
+    align-items: center;
+  }
+}
+/* .faded-text{
     position:absolute;
     user-select:none;
     font-size: 7em;
@@ -94,7 +202,7 @@ a{
     left: -5%;
     font-weight: bold;
     transition: all 3s;
-}
+} */
 
 .hero-section-left{
     /* width:100%; */
@@ -139,13 +247,14 @@ a{
     border: solid 3px transparent;
     position: relative;
     z-index: 1;
+
   }
   .btn-pink::before {
     content: "";
     position: absolute;
     background-color: #fff;
     top: 0px;
-    left: 0;
+    left: 0px;
     right: 0;
     bottom: 0px;
     z-index: -1;
@@ -313,12 +422,21 @@ a{
 
   .project-card{
     width:90%;
-    height:550px;
-    background-image: url(./images/projects/Project1.png);
-    background-size: cover;
-    /* background-repeat: no-repeat; */
+    /* height:550px; */
+    height:50vh;
     position:relative;
     box-shadow:0px 0px 40px #1f1f1f;
+    transition: height 0.3s ease;
+    overflow: auto;
+
+    background-size: cover;
+    min-height: 500px;
+    display: flex;
+
+  }
+
+  .project-card::-webkit-scrollbar {
+    display: none;
   }
 
   .project-card::after{
@@ -386,6 +504,9 @@ a{
     z-index:5;
     gap:1em;
     transition:all 0.4s;
+
+    justify-content: center;
+    width: 90%;
   }
 
 
@@ -523,9 +644,17 @@ a{
   .skills-container{
     position:relative;
     display:flex;
-    padding:5rem;
-    margin:10rem auto;
+    padding:3rem;
+    padding-bottom: 10rem;
+    margin:10rem 0rem;
     gap:30px;
+    overflow: hidden;
+    width: 100vw;
+    box-sizing: border-box;
+  }
+
+  .skills-container::-webkit-scrollbar {
+    display: none;
   }
 
 .skill-container-left{
@@ -545,13 +674,17 @@ a{
 
 .skill-fade-text{
   position:absolute;
-  font-size:15em;
+  /* font-size:15em; */
+  font-size: clamp(5rem, 10vw, 15em);
   font-style:bold;
   color:rgb(231,231,231);
-  bottom:-34.5%;
-  right:-25%;
+  /* bottom:34.5%;
+  right:25%; */
+  bottom:0;
+  right: 15px;;
   user-select:none;
-  overflow-y:hidden;
+  /* overflow-y:hidden; */
+  /* z-index: 1; */
 }
 
 .blob-style{
@@ -580,7 +713,8 @@ a{
 }
 
 .skill-heading{
-  font-size:50px;
+  font-size: clamp(2rem, 5vw, 50px);
+  /* font-size:50px; */
   font-style: bold;
   color: var(--bgOrange);
   line-height: 50px;
@@ -604,34 +738,34 @@ a{
   background-color: rgb(231,231,231);
 }
 .contactus-heading{
-  font-size: 5em;
+  /* font-size: 5em; */
+  font-size: clamp(2rem, 5vw, 5em);
   color: var(--bgOrange);
   padding-top: 2rem;
+  margin: 0px 10px;
 }
 .contactus-subheading{
-  font-size: 3rem;
+  /* font-size: 3rem; */
+  font-size: clamp(1.5rem, 5vw, 3em);
   color: #343d68aa ;
   text-transform: capitalize;
+  margin: 0px 10px;
 }
 .contactus-form-container{
   margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 .formfield-container{
   display: flex;
   flex-direction: column;
   gap: 30px;
-  width: 100%;
-  margin: 2rem 2rem;
+  /* width: 100%;  */
+  margin: 0 10px;
+  box-sizing: border-box;
 }
 .formfield{
-  width: 150%;
   height: 42px;
   padding: 0 2rem;
-  font-size: 18px;
+  font-size: 1rem;
   border-radius: 5px;
   box-shadow: 2px 2px 10px #1f1f1f;
   font-weight: 500;
@@ -645,7 +779,7 @@ a{
 #submit-btn{
   border: none;
   font-size: 1.4rem;
-  margin: 1rem 0;
+  margin: 1rem 10px;
 }
 
 #submit-btn:hover{
@@ -659,29 +793,33 @@ a{
 
 footer{
   position: relative;
-  margin-top: -1px;
   background-color: #343d68;
-  padding: 5rem;
+  /* padding: 5rem; */
+  
 }
 
 .footer-wrapper{
-  display: flex;
-  gap: 1rem;
-  padding: 1.2rem;
-  justify-content: space-between;
-  align-items: center;
+  /* display: flex; */
+  padding-bottom: 7rem;
+  /* justify-content: center;
+  align-items: center; */
 }
 .footer-faded-text{
   position: absolute ;
-  left: 0;
+  left: 10px;
   bottom: 0;
   color: #535c87;
   user-select: none;
-  font-size: 5rem;
+  /* font-size: 5rem; */
+  font-size: clamp(3rem, 10vw, 5em);
+
 }
 .link-wrapper{
   display: flex;
   gap: 1.2rem;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 .link-wrapper div a{
   color: white;
