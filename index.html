@@ -259,34 +259,38 @@
             <h3 class="contactus-subheading">Questions, thoughts, or just want to say hello?</h3>
 
             <div class="contactus-form-container">
-               <form action="https://formspree.io/f/xwpvbzeb" method="POST">
+               <form id="contactForm"  action="https://formspree.io/f/xwpvbzeb" method="POST">
                 <div class="formfield-container">
                   <input class="formfield"
                   type="text"
                   name="name"
                   id=""
-                  placeholder="Enter your name"/>
+                  placeholder="Enter your name"
+                  required/>
 
                   <input class="formfield" 
                   type="email" 
                   name="email" 
                   id=""
-                  placeholder="Enter your email address"/>
+                  placeholder="Enter your email address"
+                  required/>
 
                   <input class="formfield" 
                   type="text" 
                   name="subject" 
                   id=""
-                  placeholder="Enter your subject"/>
+                  placeholder="Enter your subject"
+                  required/>
 
                   <textarea name="message"
                   id="" cols="30" rows="10"
                   class="formfield formfield-textarea"
-                  placeholder="Enter your message"></textarea>
+                  placeholder="Enter your message"
+                  required></textarea>
 
                 </div>
 
-                <button type="submit" class="btn-pink" id="submit-btn">
+                <button type="submit" class="btn-pink" id="submit-btn" disabled>
                   send message<i class="submit-icon fa-solid fa-paper-plane"></i>
                 </button>
                </form>
@@ -333,6 +337,41 @@
       typeSpeed: 100,
       backSpeed: 80,
       backDelay: 1000,
+    });
+  </script>
+
+
+  <script>
+    // Get form and input fields
+    const form = document.getElementById("contactForm");
+    const submitButton = document.getElementById("submit-btn");
+    const inputs = form.querySelectorAll("input, textarea");
+
+    // Function to check if all fields are filled
+    function checkFormValidity() {
+      let isFormValid = true;
+
+      // Loop through all inputs and check if they are filled
+      inputs.forEach(input => {
+        if (!input.value) {
+          isFormValid = false;
+        }
+      });
+
+      // Enable or disable the submit button based on form validity
+      submitButton.disabled = !isFormValid;
+    }
+
+    // Listen for input events on the form fields
+    inputs.forEach(input => {
+      input.addEventListener("input", checkFormValidity);
+    });
+
+    // Optionally, prevent form submission if there are invalid fields (although HTML5 does this by default)
+    form.addEventListener("submit", function(event) {
+      if (submitButton.disabled) {
+        event.preventDefault();
+      }
     });
   </script>
 </body>
