@@ -515,8 +515,8 @@ a{
 
   .project-content-right{ 
     /* right:10%; */
-    left:20%;
-
+    left:10%;
+    /* margin-left: 10%; */
   }
 
   .project-skills-container{
@@ -585,6 +585,14 @@ a{
     background-image: url(./images/projects/Project4.png);
   }
 
+  @media (min-width: 13001px) {
+    .project-content-right{ 
+      /* right:10%; */
+      /* left:20%; */
+      margin-left: 10%;
+    }
+  }
+
   @media (max-width:1300px) {
     .page-header {
       padding-top: 30px;
@@ -615,6 +623,8 @@ a{
     .project-content-left {
       left: 0;
     }
+
+    
     .project-heading {
       font-size: 40px;
       width: 100%;
