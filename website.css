@@ -505,8 +505,6 @@ a{
     gap:1em;
     transition:all 0.4s;
     justify-content: center;
-    align-items: center;
-    text-align: center;
     width: 90%;
   }
 
@@ -516,7 +514,8 @@ a{
   }
 
   .project-content-right{ 
-    right:10%;
+    /* right:10%; */
+
   }
 
   .project-skills-container{
@@ -535,7 +534,6 @@ a{
     font-size:50px;
     font-weight: bold;
     line-height:3rem;
-    align-items: center;
   }
   
   .project-subHeading{
