@@ -504,8 +504,9 @@ a{
     z-index:5;
     gap:1em;
     transition:all 0.4s;
-
     justify-content: center;
+    align-items: center;
+    text-align: center;
     width: 90%;
   }
 
@@ -534,6 +535,7 @@ a{
     font-size:50px;
     font-weight: bold;
     line-height:3rem;
+    align-items: center;
   }
   
   .project-subHeading{
